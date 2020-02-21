@@ -1,0 +1,30 @@
+<input name="file" style="margin: 0px; padding: 0px; top: 26.96px; right: 0px; font-family: Arial; font-size: 118px; position: absolute; cursor: pointer; opacity: 0;" type="file" accept="image/*" multiple="multiple">
+
+<div class="drag_drop_upload_area drag_drop_upload_area_809018641" style="display: none;"><span>Drop files here to upload</span></div>
+
+<ul class="uploaded_file_list"></ul>
+
+<img id="editor_source_image" style="display:none;" alt="No image155" src="https://assets.bonanzastatic.com/images/no-image155.jpg">
+
+<button id = "cameraTakePicture">TAKE PICTURE</button>
+<img id = "myImage"></img>
+
+
+document.getElementById("cameraTakePicture").addEventListener 
+   ("click", cameraTakePicture); 
+   
+   function cameraTakePicture() { 
+   navigator.camera.getPicture(onSuccess, onFail, {  
+      quality: 50, 
+      destinationType: Camera.DestinationType.DATA_URL 
+   });  
+   
+   function onSuccess(imageData) { 
+      var image = document.getElementById('myImage'); 
+      image.src = "data:image/jpeg;base64," + imageData; 
+   }  
+   
+   function onFail(message) { 
+      alert('Failed because: ' + message); 
+   } 
+}
